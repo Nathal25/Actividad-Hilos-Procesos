@@ -10,3 +10,5 @@ Después de realizar las ejecuciones de las tres versiones del programa (Secuenc
 - Versión Secuencial: 225.0253382436676 segundos.
 - Versión con Hilos:  234.3737680912018 segundos.
 - Versión con Procesos: 268.336030403773 segundos.
+
+En el siguiente enlace de Google Colab se encontrará las ejecuciónes: https://colab.research.google.com/drive/1ScIsC25o1VfTuX2AGK67GJvMdJCZPi_b?usp=sharing
