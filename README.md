@@ -12,3 +12,7 @@ Después de realizar las ejecuciones de las tres versiones del programa (Secuenc
 - Versión con Procesos: 268.336030403773 segundos.
 
 En el siguiente enlace de Google Colab se encontrará las ejecuciónes: https://colab.research.google.com/drive/1ScIsC25o1VfTuX2AGK67GJvMdJCZPi_b?usp=sharing
+
+Integrantes:
+1. Natalia Ortiz Granada - 2372231
+2. Santiago Valencia Aguiño - 2343334
