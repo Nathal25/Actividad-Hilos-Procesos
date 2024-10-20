@@ -1,6 +1,12 @@
 from multiprocessing import Process
 from time import time
 from fibonacci import fibo  # Importamos la función fibo desde el archivo fibonacci.py
+import statistics  # Nuevo: Para calcular el promedio
+
+# Nuevo: Función para calcular el promedio de los tiempos, excluyendo el más alto y el más bajo
+def calculate_average_time(times):
+    sorted_times = sorted(times)
+    return statistics.mean(sorted_times[1:-1])
 
 # Clase para crear un proceso que calcule el Fibonacci en una posición específica
 class FiboWorker(Process):
@@ -14,7 +20,8 @@ class FiboWorker(Process):
         self.vector[self.index] = fibo(self.vector[self.index])
         print(f"Proceso {self.index}: Fibonacci calculado y almacenado en la posición {self.index}")
 
-def main():
+# Nuevo: Función que contiene la lógica principal del cálculo con procesos
+def run_fibonacci():
     vector_size = 144
     vector = [33] * vector_size  #Inicializa un vector con 144 posiciones de valor 33
 
@@ -31,8 +38,24 @@ def main():
     for process in processes:
         process.join()
 
+    execution_time = time() - ts
     print(f"Vector después de calcular Fibonacci: {vector}")
-    print(f"Tiempo total: {time() - ts}")
+    return execution_time  # Nuevo: Retornamos el tiempo de ejecución
+
+def main():
+    num_runs = 5  # Nuevo: Número de ejecuciones
+    execution_times = []  # Nuevo: Lista para almacenar los tiempos de ejecución
+
+    for i in range(num_runs):
+        print(f"\nEjecución {i+1}:")
+        execution_time = run_fibonacci()
+        execution_times.append(execution_time)
+        print(f"Tiempo de ejecución: {execution_time:.5f} segundos")
+
+    average_time = calculate_average_time(execution_times)
+
+    print(f"\nTiempos de ejecución: {execution_times}")
+    print(f"Promedio de los 3 tiempos centrales: {average_time:.5f} segundos")
 
 if __name__ == "__main__":
     main()
